@@ -25,6 +25,7 @@
 
   let base = 0;      // numero mostrato
   let expected = 1;  // seguente
+  let task = 'seguente';
 
   function randInt(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -76,7 +77,8 @@
       expected = tmp;
     }
 
-    question.textContent = "Qual è il " + task + " del " + base + "?";
+    const taskClass = task === 'precedente' ? 'taskWord--prev' : 'taskWord--next';
+    question.innerHTML = `Qual è il <span class="taskWord ${taskClass}">${task}</span> del ${base}?`;
 
 
     msgBig.textContent = 'Scegli un numero!';
