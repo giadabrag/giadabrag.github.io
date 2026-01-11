@@ -1,12 +1,14 @@
 :root {
-  color-scheme: light;
-  --bg: #f5efe6;
-  --bg-accent: #e8dcc7;
-  --ink: #2d2a24;
-  --muted: #6f675f;
-  --brand: #b34f29;
-  --card: #fffaf3;
-  --shadow: rgba(51, 40, 25, 0.12);
+  color-scheme: dark;
+  --bg: #0b1220;
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.7);
+  --accent: #60a5fa;
+  --accent-2: #34d399;
+  --accent-3: #fb7185;
+  --glass: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.14);
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
 *,
@@ -17,14 +19,37 @@
 
 body {
   margin: 0;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  color: var(--ink);
-  background: radial-gradient(circle at top, var(--bg-accent), var(--bg));
+  font-family:
+    "Century Gothic",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial;
+  text-transform: uppercase;
+  color: var(--text);
+  background: radial-gradient(
+      1200px 800px at 30% 10%,
+      rgba(96, 165, 250, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      1200px 900px at 80% 30%,
+      rgba(52, 211, 153, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 700px at 50% 90%,
+      rgba(251, 113, 133, 0.18),
+      transparent 55%
+    ),
+    var(--bg);
 }
 
 .page {
   min-height: 100vh;
-  padding: 48px 20px 64px;
+  padding: 48px 24px 64px;
 }
 
 .hero {
@@ -44,7 +69,7 @@ body {
 h1 {
   font-size: clamp(32px, 4vw, 52px);
   margin: 0 0 12px;
-  color: var(--brand);
+  color: var(--text);
 }
 
 .subtitle {
@@ -59,13 +84,16 @@ h1 {
   margin: 0 auto 28px;
   padding: 16px 20px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 14px 40px var(--shadow);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .legend code {
   font-family: "Courier New", Courier, monospace;
-  background: #f0e6d9;
+  background: rgba(255, 255, 255, 0.08);
   padding: 2px 6px;
   border-radius: 6px;
 }
@@ -77,11 +105,73 @@ h1 {
   margin: 0 auto;
 }
 
+.category-nav {
+  max-width: 980px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.category-nav h2 {
+  margin: 0 0 12px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.chip {
+  text-decoration: none;
+  color: var(--text);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.chip-empty {
+  color: var(--muted);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.overview {
+  max-width: 980px;
+  margin: 0 auto 32px;
+  background: var(--glass);
+  border-radius: 20px;
+  padding: 20px 24px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.overview-header h2 {
+  margin: 0 0 6px;
+}
+
+.overview-header p {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
 .category {
-  background: var(--card);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.06)
+  );
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 18px 40px var(--shadow);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .category-header h2 {
@@ -108,14 +198,16 @@ h1 {
   border-radius: 16px;
   text-decoration: none;
   color: inherit;
-  border: 1px solid rgba(179, 79, 41, 0.18);
-  background: white;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 20px rgba(179, 79, 41, 0.15);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
 }
 
 .card-title {
@@ -128,11 +220,18 @@ h1 {
   color: var(--muted);
 }
 
+.card-meta {
+  font-size: 12px;
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 .card-link {
   margin-top: auto;
   font-size: 13px;
   font-weight: 700;
-  color: var(--brand);
+  color: var(--accent);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -150,12 +249,87 @@ h1 {
   font-size: 14px;
 }
 
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
 @media (max-width: 700px) {
   .page {
-    padding: 32px 16px 48px;
+    padding: 28px 14px 44px;
   }
 
   .legend {
     text-align: center;
+  }
+
+  .hero {
+    text-align: left;
+  }
+
+  h1 {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .category-nav {
+    text-align: left;
+  }
+
+  .chips {
+    justify-content: flex-start;
+  }
+
+  .overview,
+  .category {
+    padding: 18px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .card-title {
+    font-size: 17px;
+  }
+
+  .card-desc {
+    font-size: 13px;
+  }
+
+  .footer {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .page {
+    padding: 24px 12px 40px;
+  }
+
+  .legend {
+    padding: 14px 16px;
+  }
+
+  .chip {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .category-header h2 {
+    font-size: 22px;
+  }
+
+  .overview-header h2 {
+    font-size: 22px;
   }
 }
