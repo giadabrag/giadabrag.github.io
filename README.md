@@ -1,4 +1,4 @@
-# giadabrag.github.io
+# GiadaBrag.github.io
 
 Indice semplice per le app pubblicate su GitHub Pages.
 
