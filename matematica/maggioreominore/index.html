@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Maggiore o Minore (1–10)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app" role="application" aria-label="App didattica: maggiore o minore">
+    <header>
+      <div class="title">
+        <h1>Maggiore o Minore</h1>
+        <div class="subtitle">Scegli il simbolo giusto (1–10)</div>
+      </div>
+      <div class="pill" aria-label="Punteggio e serie">
+        <div>
+          <div class="tiny">Punteggio</div>
+          <b id="score">0</b>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <div class="tiny">Serie</div>
+          <b id="streak">0</b>
+        </div>
+      </div>
+    </header>
+
+    <section class="card" aria-live="polite">
+      <div class="numbersRow">
+        <div class="numBox">
+          <div class="label">Numero A</div>
+          <div class="num" id="a">1</div>
+        </div>
+
+        <div class="middle">
+          <div class="questionMark" id="slot" aria-label="Spazio per il simbolo">?</div>
+          <div class="hint">A ? B</div>
+        </div>
+
+        <div class="numBox">
+          <div class="label">Numero B</div>
+          <div class="num" id="b">2</div>
+        </div>
+      </div>
+
+      <div class="controls" aria-label="Controlli">
+        <div class="choices" id="choices" role="group" aria-label="Scegli il simbolo corretto">
+          <button class="choice" data-sym="<" aria-label="Minore, simbolo minore">&lt;</button>
+          <button class="choice" data-sym=">" aria-label="Maggiore, simbolo maggiore">&gt;</button>
+        </div>
+
+        <div class="nextWrap" id="nextWrap">
+          <button class="nextBig" id="btnNextBig" aria-label="Avanti al prossimo esercizio">
+            AVANTI ➡️
+          </button>
+        </div>
+      </div>
+
+      <div class="feedbackRow">
+        <div class="msg">
+          <div class="big" id="msgBig">Tocca un simbolo!</div>
+          <div class="small" id="msgSmall">Se A è più grande di B scegli “&gt;”, se è più piccolo scegli “&lt;”.</div>
+        </div>
+
+        <div class="actions">
+          <button class="secondary" id="btnNew" title="Reset partita">🔄 Nuovo</button>
+        </div>
+      </div>
+
+      <div class="bar">
+        <div class="miniCard">
+          <div>
+            <div class="k">Livello</div>
+            <div class="v" id="level">1</div>
+          </div>
+          <!-- <div class="miniRight">
+            Solo &lt; e &gt;
+          </div> -->
+        </div>
+
+        <div class="miniCard">
+          <div>
+            <div class="k">Corrette</div>
+            <div class="v"><span id="ok">0</span> / <span id="tot">0</span></div>
+          </div>
+          <!-- <div class="miniRight">
+            Obiettivo: 10
+          </div> -->
+        </div>
+      </div>
+
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
+    </section>
+
+    <!--
+    <footer class="footer">
+      Funziona offline • Mobile-friendly • Dopo la risposta: AVANTI
+    </footer>
+    -->
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

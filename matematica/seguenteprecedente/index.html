@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Seguente (0–10)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app" role="application" aria-label="App didattica: seguente">
+    <header>
+      <div class="title">
+        <h1>Il seguente e il precedente</h1>
+        <div class="subtitle">Numeri da 0 a 10</div>
+      </div>
+
+      <div class="pill" aria-label="Punteggio e serie">
+        <div>
+          <div class="tiny">Punteggio</div>
+          <b id="score">0</b>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <div class="tiny">Serie</div>
+          <b id="streak">0</b>
+        </div>
+      </div>
+    </header>
+
+    <section class="card" aria-live="polite">
+      <!-- Domanda in UNICA card -->
+      <div class="questionLine">
+        <div class="questionText">
+          <div id="question">Qual è il seguente del n ?</div>
+        </div>
+      </div>
+
+      <div class="controls" aria-label="Scegli la risposta">
+        <div class="gridWrap">
+          <div class="numGrid" id="grid" role="group" aria-label="Scegli un numero da 0 a 10">
+            <!-- bottoni -->
+          </div>
+
+          <button class="nextBig nextInGrid" id="btnNextBig" aria-label="Avanti al prossimo esercizio">
+            AVANTI ➡️
+          </button>
+        </div>
+      </div>
+
+
+      <div class="feedbackRow">
+        <div class="msg">
+          <div class="big" id="msgBig">Scegli un numero!</div>
+          <!-- <div class="small" id="msgSmall">Trova il numero subito dopo.</div> -->
+        </div>
+
+        <div class="actions">
+          <button class="secondary" id="btnNew" title="Reset partita">🔄 Nuovo</button>
+        </div>
+      </div>
+
+      <div class="bar">
+        <div class="miniCard">
+          <div>
+            <div class="k">Livello</div>
+            <div class="v" id="level">1</div>
+          </div>
+          <div class="miniRight">
+            0–10
+          </div>
+        </div>
+
+        <div class="miniCard">
+          <div>
+            <div class="k">Corrette</div>
+            <div class="v"><span id="ok">0</span> / <span id="tot">0</span></div>
+          </div>
+          <div class="miniRight">
+            Obiettivo: 10
+          </div>
+        </div>
+      </div>
+
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

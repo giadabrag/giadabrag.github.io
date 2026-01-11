@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>App di Snakeyes97</title>
+    <meta
+      name="description"
+      content="Indice delle app create da Snakeyes97, organizzate per categorie."
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="eyebrow">Snakeyes97.github.io</p>
+        <h1>Indice delle mie app</h1>
+        <p class="subtitle">
+          Raccolta di esercizi e mini-progetti. Aggiungo nuove categorie nel
+          tempo: matematica, scienze, geometria, musica e altro.
+        </p>
+      </header>
+
+      <main>
+        <section class="legend">
+          <p>
+            Per aggiungere una nuova categoria o app, modifica
+            <code>data/apps.js</code> e crea la relativa cartella.
+          </p>
+        </section>
+
+        <section id="catalogo" class="catalogo" aria-live="polite"></section>
+      </main>
+
+      <footer class="footer">
+        <p>Ultimo aggiornamento: <span id="last-updated">oggi</span></p>
+      </footer>
+    </div>
+
+    <script src="data/apps.js"></script>
+    <script>
+      const container = document.getElementById("catalogo");
+      const updated = document.getElementById("last-updated");
+
+      const escapeHtml = (value) =>
+        value.replace(/[&<>"']/g, (char) => {
+          const map = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          };
+          return map[char];
+        });
+
+      const renderApp = (app) => `
+        <a class="card" href="${app.path}">
+          <div class="card-title">${escapeHtml(app.title)}</div>
+          ${
+            app.description
+              ? `<div class="card-desc">${escapeHtml(app.description)}</div>`
+              : ""
+          }
+          <span class="card-link">Apri</span>
+        </a>
+      `;
+
+      const renderCategory = (category) => `
+        <article class="category">
+          <header class="category-header">
+            <h2>${escapeHtml(category.title)}</h2>
+            ${
+              category.description
+                ? `<p>${escapeHtml(category.description)}</p>`
+                : ""
+            }
+          </header>
+          <div class="cards">
+            ${category.apps.map(renderApp).join("")}
+          </div>
+        </article>
+      `;
+
+      if (!window.APP_INDEX || window.APP_INDEX.length === 0) {
+        container.innerHTML =
+          '<p class="empty">Nessuna app ancora disponibile.</p>';
+      } else {
+        container.innerHTML = window.APP_INDEX.map(renderCategory).join("");
+      }
+
+      const now = new Date();
+      updated.textContent = now.toLocaleDateString("it-IT", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+    </script>
+  </body>
+</html>
