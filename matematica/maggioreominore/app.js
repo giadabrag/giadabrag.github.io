@@ -121,7 +121,7 @@
       streak++;
       score += 10 + Math.min(10, streak);
 
-      msgBig.textContent = 'Bravissimo! ✅';
+      msgBig.textContent = 'Esatto! ✅';
       msgBig.className = 'big badgeOk';
       msgSmall.textContent = (cs === '<')
         ? `${a} è minore di ${b}. Quindi: ${a} < ${b}.`

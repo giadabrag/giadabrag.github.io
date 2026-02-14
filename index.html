@@ -54,15 +54,21 @@
           return map[char];
         });
 
+      const latestAppPath = (() => {
+        if (!window.APP_INDEX || window.APP_INDEX.length === 0) return "";
+        const all = window.APP_INDEX.flatMap((category) => category.apps || []);
+        return all.length ? all[all.length - 1].path : "";
+      })();
+
       const renderApp = (app) => `
-        <a class="card" href="${app.path}">
+        <a class="card${app.path === latestAppPath ? " is-new" : ""}" href="${app.path}">
           <div class="card-title">${escapeHtml(app.title)}</div>
           ${
             app.description
               ? `<div class="card-desc">${escapeHtml(app.description)}</div>`
               : ""
           }
-          <span class="card-link">Apri</span>
+          ${app.path === latestAppPath ? '<span class="new-badge">NEW</span>' : ""}
         </a>
       `;
 
@@ -98,3 +104,4 @@
     </script>
   </body>
 </html>
+

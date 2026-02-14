@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Riordina</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app" role="application" aria-label="App didattica: riordina numeri">
+    <header>
+      <div class="title">
+        <h1>Riordina</h1>
+        <div class="subtitle">Ordina la sequenza in base alla consegna</div>
+      </div>
+
+      <div class="headerActions">
+        <a class="homeBtn" href="/" aria-label="Torna alla home">
+          <span class="homeIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" focusable="false">
+              <path d="M4 10.5L12 4l8 6.5v8.5a1 1 0 0 1-1 1h-5.5v-6h-3v6H5a1 1 0 0 1-1-1z" fill="currentColor"/>
+            </svg>
+          </span>
+          Home
+        </a>
+        <div class="pill" aria-label="Punteggio e serie">
+          <div>
+            <div class="tiny">Punteggio</div>
+            <b id="score">0</b>
+          </div>
+          <div class="divider"></div>
+          <div>
+            <div class="tiny">Serie</div>
+            <b id="streak">0</b>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="card" aria-live="polite">
+      <div class="taskLine">
+        <div class="taskText" id="taskText">Ordina in ordine crescente</div>
+      </div>
+
+      <div class="helpText">Trascina un numero nella barra oppure tocca 2 numeri per spostarlo.</div>
+
+      <div class="sequence" id="sequence" role="group" aria-label="Sequenza da riordinare"></div>
+
+      <div class="controls">
+        <button class="nextBig" id="btnCheck" aria-label="Controlla la sequenza">CONTROLLA</button>
+        <button class="nextBig nextHidden" id="btnNextBig" aria-label="Vai al prossimo esercizio">AVANTI ➡️</button>
+      </div>
+
+      <div class="feedbackRow">
+        <div class="msg">
+          <div class="big" id="msgBig">Riorganizza la sequenza!</div>
+          <div class="small" id="msgSmall">Consegna casuale: crescente o decrescente.</div>
+        </div>
+
+        <div class="actions">
+          <button class="secondary" id="btnNew" title="Reset partita">🔄 Nuovo</button>
+        </div>
+      </div>
+
+      <div class="bar">
+        <div class="miniCard">
+          <div>
+            <div class="k">Livello</div>
+            <div class="v" id="level">1</div>
+          </div>
+          <div class="miniRight" id="countInfo">5 numeri</div>
+        </div>
+
+        <div class="miniCard">
+          <div>
+            <div class="k">Corrette</div>
+            <div class="v"><span id="ok">0</span> / <span id="tot">0</span></div>
+          </div>
+          <div class="miniRight">Obiettivo: precisione</div>
+        </div>
+      </div>
+
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

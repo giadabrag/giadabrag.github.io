@@ -148,7 +148,7 @@
     streak++;
     score += 10 + Math.min(10, streak);
 
-    msgBig.textContent = 'Bravissimo! ✅';
+    msgBig.textContent = 'Esatto! ✅';
     msgBig.className = 'big badgeOk';
     // msgSmall.textContent = `Giusto: il seguente di ${base} è ${expected}.`;
 

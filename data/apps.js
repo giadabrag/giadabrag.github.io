@@ -14,6 +14,11 @@ window.APP_INDEX = [
         description: "Trova il numero che viene prima o dopo.",
         path: "matematica/seguenteprecedente/",
       },
+      {
+        title: "Riordina",
+        description: "Riordina una sequenza in ordine crescente o decrescente.",
+        path: "matematica/riordina/",
+      },
     ],
   },
 ];
