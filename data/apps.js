@@ -22,3 +22,4 @@ window.APP_INDEX = [
     ],
   },
 ];
+

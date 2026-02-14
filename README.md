@@ -8,3 +8,4 @@ Indice semplice per le app pubblicate su GitHub Pages.
 
 La pagina principale (`index.html`) legge i dati da `data/apps.js` e genera
 automaticamente le card.
+

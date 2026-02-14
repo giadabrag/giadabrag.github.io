@@ -19,9 +19,7 @@
   let numbers = [];
   let target = [];
   let mode = 'asc';
-  let selectedIndex = null;
   let locked = false;
-  let suppressTapUntil = 0;
   let mouseDragSourceIndex = -1;
   let touchDrag = {
     active: false,
@@ -196,34 +194,11 @@
       return;
     }
 
-    suppressTapUntil = Date.now() + 300;
-
     const insertAt = insertIndex >= 0
       ? insertIndex
       : getInsertIndexFromPointerX(e.clientX, sourceIndex);
 
-    selectedIndex = null;
     moveItem(sourceIndex, insertAt);
-  }
-
-  function onTileTap(index){
-    if (locked) return;
-
-    if (selectedIndex === null){
-      selectedIndex = index;
-      renderSequence();
-      return;
-    }
-
-    if (selectedIndex === index){
-      selectedIndex = null;
-      renderSequence();
-      return;
-    }
-
-    const from = selectedIndex;
-    selectedIndex = null;
-    moveItem(from, index);
   }
 
   function renderSequence(){
@@ -237,15 +212,8 @@
       tile.setAttribute('aria-label', `Numero ${value}`);
       tile.dataset.index = String(index);
 
-      if (selectedIndex === index) tile.classList.add('selected');
-
       if (!locked){
         tile.draggable = true;
-
-        tile.addEventListener('click', () => {
-          if (Date.now() < suppressTapUntil) return;
-          onTileTap(index);
-        }, { passive: true });
 
         tile.addEventListener('pointerdown', (e) => {
           startTouchDrag(e, tile, index);
@@ -306,7 +274,6 @@
   }
 
   function makeExercise(){
-    selectedIndex = null;
     locked = false;
     resetTouchDragState();
     mode = Math.random() < 0.5 ? 'asc' : 'desc';
@@ -333,7 +300,7 @@
 
     msgBig.textContent = 'Riorganizza la sequenza!';
     msgBig.className = 'big';
-    msgSmall.textContent = 'Trascina un numero nella barra, oppure tocca 2 numeri.';
+    msgSmall.textContent = 'Trascina un numero per spostarlo.';
 
     showCheck();
     renderSequence();
@@ -403,7 +370,6 @@
     const insertAt = getInsertIndexFromPointerX(e.clientX, mouseDragSourceIndex);
     const fromIndex = mouseDragSourceIndex;
     mouseDragSourceIndex = -1;
-    selectedIndex = null;
     clearInsertionHint();
     moveItem(fromIndex, insertAt);
   });
@@ -415,3 +381,4 @@
   updateHUD();
   makeExercise();
 })();
+
